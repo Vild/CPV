@@ -1,0 +1,46 @@
+{
+	"name": "cpv",
+	"description": "Control panel for Vibe.d websites",
+	"copyright": "Copyright © 2015, Dan Printzell",
+	"authors": ["Dan Printzell"],
+	"targetType": "none",
+	"dependencies": {
+		"cpv:webfrontend": "*",
+		"cpv:backend": "*",
+	},
+	"subPackages": [
+		{
+			"name": "webfrontend",
+			"targetType": "executable",
+			"targetName": "cpv-web",
+			"dependencies": {
+				"cpv:protocol": "*",
+				"vibe-d": "~>0.7.19"
+			},
+			"versions": ["VibeDefaultMain"],
+			"sourcePaths": ["WebFrontend/source"],
+			"importPaths": ["WebFrontend/source"],
+			"stringImportPaths": ["WebFrontend/views"]
+		},
+		{
+			"name": "backend",
+			"targetType": "executable",
+			"targetName": "cpv",
+			"dependencies": {
+				"cpv:protocol": "*",
+				"vibe-d": "~>0.7.19"
+			},
+			"versions": ["VibeDefaultMain"],
+			"sourcePaths": ["Backend/source"],
+			"importPaths": ["Backend/source"],
+		},
+		{
+			"name": "protocol",
+			"targetType": "library",
+			"sourcePaths": ["Protocol/source"],
+			"importPaths": ["Protocol/source"],
+		}
+	]
+
+
+}
