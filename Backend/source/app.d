@@ -1,14 +1,27 @@
-import vibe.http.router : URLRouter;
-import vibe.http.server : HTTPServerSettings, listenHTTP;
-import vibe.web.rest : registerRestInterface;
-
-import cpv.protocol.pingimpl;
+import cpv.manager;
+import cpv.websitemanager;
 
 shared static this() {
-	URLRouter router = new URLRouter();
-	router.registerRestInterface(new Ping());
+	Manager manager = new Manager(6545);
+	WebsiteManager websites = new WebsiteManager();
 
-	HTTPServerSettings settings = new HTTPServerSettings();
-	settings.port = 6545;
-	listenHTTP(settings, router);
+	manager.Start();
+	websites.Add(new TestWebsite(), "/test", 8181);
+}
+
+import cpv.website.website;
+import vibe.http.server;
+class TestWebsite : IWebsite {
+  override void Start() {
+	}
+  override void Stop() {
+	}
+
+	void index(HTTPServerRequest req, HTTPServerResponse res) {
+		res.writeBody("<center><h1>This is TestWebsite! fullURL:"~req.fullURL.toString~"</h1></center>", "text/html; charset=UTF-8");
+	}
+
+	override void RegisterURLs(URLRouter router) {
+		router.any("*", &index);
+	}
 }

@@ -3,7 +3,7 @@ docs.json
 __dummy.html
 *.o
 *.obj
-cpv
-cpv-web
-dub.selections
+/cpv
+/cpv-web
+dub.selections.json
 *.a

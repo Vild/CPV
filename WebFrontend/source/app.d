@@ -2,6 +2,7 @@ import vibe.http.router : URLRouter;
 import vibe.http.server : HTTPServerSettings, listenHTTP;
 import vibe.web.rest : RestInterfaceClient;
 import vibe.web.web : registerWebInterface, render;
+import vibe.web.common : path;
 
 import cpv.protocol.ping;
 import vibe.core.log;
@@ -20,7 +21,8 @@ shared static this() {
 
 class WebFrontend {
 public:
-	void index() {
+	@path("*")
+	void getIndex() {
 		string pong = client.Ping("Test data");
 		render!("index.dt", pong);
 	}

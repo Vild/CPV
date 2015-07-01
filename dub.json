@@ -15,7 +15,7 @@
 			"targetName": "cpv-web",
 			"dependencies": {
 				"cpv:protocol": "*",
-				"vibe-d": "~>0.7.19"
+				"vibe-d": "~>0.7.24-beta.2"
 			},
 			"versions": ["VibeDefaultMain"],
 			"sourcePaths": ["WebFrontend/source"],
@@ -28,7 +28,7 @@
 			"targetName": "cpv",
 			"dependencies": {
 				"cpv:protocol": "*",
-				"vibe-d": "~>0.7.19"
+				"vibe-d": "~>0.7.24-beta.2"
 			},
 			"versions": ["VibeDefaultMain"],
 			"sourcePaths": ["Backend/source"],
